@@ -1,0 +1,26 @@
+{
+  "name": "example-federated-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile": "tsc",
+    "start": "npm run compile && node ./dist/standalone.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@apollo/server": "^4.10.0",
+    "@apollo/subgraph": "^2.6.3",
+    "@as-integrations/aws-lambda": "^3.1.0",
+    "graphql": "^16.8.1",
+    "graphql-tag": "^2.12.6"
+  }
+}

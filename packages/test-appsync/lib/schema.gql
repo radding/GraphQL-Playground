@@ -1,0 +1,36 @@
+extend schema
+  @link(
+    url: "https://specs.apollo.dev/federation/v2.0"
+    import: ["@key", "@shareable", "@external", "@requires", "@provides"]
+  ) {
+  query: Query
+}
+
+extend type Details @key(fields: "id") {
+  id: ID!
+  approvalOdds: Float
+}
+
+extend type DerivedDetails @key(fields: "id") {
+  id: ID!
+  approvalOdds: Float
+}
+
+extend type ProductOffer @key(fields: "id", resolvable: false) {
+  id: ID!
+  product: Product @external
+  derivedDetails: DerivedDetails @requires(fields: "product { id }")
+  details: DerivedDetails @requires(fields: "product { id }")
+  approvalOdds: ApprovalOdds @requires(fields: "product { id }")
+}
+
+type ApprovalOdds {
+  label: String
+  value: Float
+  name: String
+  productID: ID!
+}
+
+type Product @external {
+  id: ID!
+}
